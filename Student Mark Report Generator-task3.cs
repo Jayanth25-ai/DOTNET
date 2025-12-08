@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace StudentMarksReport
 {
@@ -8,14 +8,14 @@ namespace StudentMarksReport
         {
             Console.WriteLine("=== Student Marks Report Generator ===");
 
-            // 1. Read number of students
-            Console.Write("Enter number of Subject for a Student : ");
+            // Read number of subject for a students
+            Console.Write("Enter total number of Subject for a Student : ");
             int n = int.Parse(Console.ReadLine());
 
             // Array to store marks
             int[] marks = new int[n];
 
-            // 2. Read marks of all Subject
+            // It read marks of all Subject
             Console.WriteLine("Enter  each mark of a Subject:");
             for (int i = 0; i < n; i++)
             {
@@ -23,19 +23,19 @@ namespace StudentMarksReport
                 marks[i] = int.Parse(Console.ReadLine());
             }
 
-            // 3. Display original marks
+           
             Console.WriteLine();
             Console.WriteLine("Marks (original order):");
             PrintArray(marks);
 
-            // 4. Backup copy
+            //Backup copy of marks
             int[] backupMarks = new int[n];
             for (int i = 0; i < n; i++)
             {
                 backupMarks[i] = marks[i];
             }
 
-            // 5. Sorted copy
+            // Sorted copy of marks
             int[] sortedMarks = new int[n];
             for (int i = 0; i < n; i++)
             {
@@ -47,7 +47,7 @@ namespace StudentMarksReport
             Console.WriteLine("Marks (sorted order):");
             PrintArray(sortedMarks);
 
-            // 6. Total, highest, lowest
+            // Total, highest, lowest marks of Student
             int totalMarks = 0;
             int highestMark = marks[0];
             int lowestMark = marks[0];
@@ -71,8 +71,37 @@ namespace StudentMarksReport
             Console.WriteLine("Total no of marks : " + totalMarks);
             Console.WriteLine("Highest mark in a subject     : " + highestMark);
             Console.WriteLine("Lowest mark in a suject        : " + lowestMark);
+            Console.WriteLine();
 
-            // 7. Search for a specific mark
+            // Average and Grade of Student
+            double average = marks.Average();
+            Console.WriteLine("Average mark: " + average);
+            string grade;
+
+            if (average >= 90)
+            {
+                grade = "A+";
+            }
+            else if (average >= 75)
+            {
+                grade = "A";
+            }
+            else if (average >= 60)
+            {
+                grade = "B";
+            }
+            else if (average >= 45)
+            {
+                grade = "C";
+            }
+            else
+            {
+                grade = "Fail";
+            }
+
+            Console.WriteLine("Grade of a student: " + grade);
+
+            // Search for a specific mark
             Console.WriteLine();
             Console.Write("Enter a mark to search: ");
             int searchMark = int.Parse(Console.ReadLine());
@@ -96,7 +125,6 @@ namespace StudentMarksReport
                 Console.WriteLine("Mark " + searchMark + " is NOT present in the list.");
             }
 
-            // 8. Show backup
             Console.WriteLine();
             Console.WriteLine("Backup copy of marks:");
             PrintArray(backupMarks);
@@ -125,11 +153,11 @@ namespace StudentMarksReport
             Console.WriteLine();
             if (arraysEqual)
             {
-                Console.WriteLine("The marks of another lists of student are also EQUAL.");
+                Console.WriteLine("The marks of another list of a student are also EQUAL.");
             }
             else
             {
-                Console.WriteLine("The marks of another lists of student are not EQUAL.");
+                Console.WriteLine("The marks of another list of a student are not EQUAL.");
             }
 
             Console.WriteLine();
@@ -147,4 +175,3 @@ namespace StudentMarksReport
         }
     }
 }
-
